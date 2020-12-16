@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+
+import Header from './Header/Header';
 
 class App extends Component {
   
   render() {
     return (
       <main className="App">
-        <h1>Running Picturades App</h1>
+        <Route path='/' component={Header}/>
       </main>
     );
   }
