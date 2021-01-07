@@ -1,5 +1,7 @@
 .nav-cards {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-evenly;
 }
 
@@ -12,7 +14,7 @@ h2 {
 .card {
   color: #fff;
   padding: 2rem;
-  max-width: 30rem;
+  width: 80%;
   background: #252525;
   flex-grow: 1;
   margin: 1rem;
@@ -73,6 +75,8 @@ h2 {
 
 @media all and (max-width: 600px) {
   .nav-cards {
+    height: 100vh;
     flex-direction: column;
+    justify-content: space-evenly;
   }
 }

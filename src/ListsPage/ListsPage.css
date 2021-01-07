@@ -1,0 +1,29 @@
+h2 {
+  width: 90%;
+  margin: 10px auto 10px auto;
+}
+
+ul {
+  padding-left: 0;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90vw;
+  margin: auto;
+}
+
+.filter-form > input, select {
+  margin-bottom: 8px;
+  height: 2rem;
+}
+
+.filter-form > label {
+  margin-bottom: 3px;
+}
+
+.filter-form > button {
+  height: 2rem;
+}
