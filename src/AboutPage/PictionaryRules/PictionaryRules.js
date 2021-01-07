@@ -2,16 +2,15 @@ export default function PictionaryRules() {
   return (
     <>
     <h4>What's needed?</h4>
-    <ul>
+    <ul className="rules-list">
       <li>Pens/Pencils</li>
       <li>Paper</li>
       <li>Drawing surface</li>
-      <li>Clear path between team and Word Giver</li>
+      <li>Clear path between each team and Word Giver</li>
     </ul>
 
-    <h4>Rules</h4>
-    <p>you CAN...</p>
-    <ul>
+    <h4>you CAN...</h4>
+    <ul className="rules-list">
       <li>Draw anything related to the word, no matter how tenuous the link</li>
       <li>Break phrases down to number of words</li>
       <li>Break words down into number of letters</li>
@@ -21,8 +20,8 @@ export default function PictionaryRules() {
       <li>Reference and draw off of previous drawings</li>
     </ul>
 
-    <p>you CANNOT...</p>
-    <ul>
+    <h4>you CANNOT...</h4>
+    <ul className="rules-list">
       <li>Use letters or numbers</li>
       <li>Speak to your teammates</li>
       <li>Use sign language</li>

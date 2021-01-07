@@ -45,6 +45,19 @@
   border-style: solid;
 }
 
+.words-list {
+  width: 90%;
+  margin: auto;
+  list-style: none;
+}
+
+.words-list > li {
+  padding: 3px 3px 3px 3px;
+  margin: 5px 0px 5px 0px;
+  border: 1px solid black;
+  box-shadow: 0 8px 6px -7px rgba(0, 0, 0, 0.4);
+}
+
 @media all and (min-width: 800px) {
 
   .list {

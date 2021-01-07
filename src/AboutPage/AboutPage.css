@@ -8,3 +8,11 @@
   margin-left: 0px;
 }
 
+.rules-list {
+  list-style-position: inside;
+}
+
+.rules-list > li {
+  margin-bottom: 5px;
+}
+

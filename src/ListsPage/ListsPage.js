@@ -9,8 +9,12 @@ class Lists extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      openList: {
+        isOpen: false,
+        listId: null
+      },
       listType: {
-        value: 'all',
+        value: 'All',
         touched: false
       },
       listTitle: {
@@ -25,14 +29,53 @@ class Lists extends Component {
   }
   
   static contextType = PicturadesContext;
+
+  openList = (listId) => {
+    this.setState({
+      openList: {
+        isOpen: true,
+        listId: listId
+      }
+    })
+  }
+
+  closeList = () => {
+    this.setState({
+      openList: {
+        isOpen: false,
+        listId: null
+      }
+    })
+  }
   
   generateLists() {
+    const { listType, listTitle, listCreator } = this.state;
+    
     return this.context.lists.map(list => {
       const listWords = this.context.words.filter(word => word.list_id === list.id)
       const listUser = this.context.users.find(user => user.id === list.user_id);
       
+      if (listType.touched && listType.value !== list.type && listType.value !== 'All') {
+        return '';
+      }
 
-      return <List key={list.id} list={list} listWords={listWords} listUser={listUser}/>
+      if (listTitle.touched && !list.title.toLowerCase().includes(listTitle.value.toLowerCase().trim())) {
+        return '';
+      }
+
+      if (listCreator.touched && !listUser.user_name.toLowerCase().includes(listCreator.value.toLowerCase().trim())) {
+        return '';
+      }
+      
+      return <List 
+          key={list.id} 
+          list={list} 
+          listWords={listWords} 
+          listUser={listUser}
+          openList={this.openList}
+          closeList={this.closeList}
+          isListOpen={this.state.openList}
+        />
     })
   }
 
@@ -108,9 +151,9 @@ class Lists extends Component {
               onChange={(e) => {this.updateListType(e.target.value)}}
               value={this.state.listType.value}
             >
-              <option value="all">All</option>
-              <option value="pictionary">Pictionary</option>
-              <option value="charades">Charades</option>
+              <option value="All">All</option>
+              <option value="Pictionary">Pictionary</option>
+              <option value="Charades">Charades</option>
             </select>
             <button onClick={this.clearFilters} type="button">Clear</button>
           </form>
