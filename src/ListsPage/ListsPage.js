@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react';
 
+import ListApiService from '../services/lists-api-service';
+import config from '../config';
+
 import PicturadesContext from '../PicturadesContext';
 import List from './List/List';
 import './ListsPage.css';
@@ -9,10 +12,9 @@ class Lists extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      openList: {
-        isOpen: false,
-        listId: null
-      },
+      lists: [],
+      listWords: [],
+      openList: null,
       listType: {
         value: 'All',
         touched: false
@@ -30,32 +32,38 @@ class Lists extends Component {
   
   static contextType = PicturadesContext;
 
+  componentDidMount() {
+    ListApiService.getLists()
+      .then(lists => this.setState({ lists: lists }))
+  }
+
   openList = (listId) => {
-    this.setState({
-      openList: {
-        isOpen: true,
-        listId: listId
-      }
-    })
+    ListApiService.getListWords(listId)
+      .then(words => {
+        const listWords = words.map((word, i) => {
+          return <li className="word" key={i}>{word.word}</li>
+        })
+
+        this.setState({
+          listWords: listWords,
+          openList: listId
+        })
+      })
+    
   }
 
   closeList = () => {
     this.setState({
-      openList: {
-        isOpen: false,
-        listId: null
-      }
+      listWords: [],
+      openList: null
     })
   }
   
   generateLists() {
     const { listType, listTitle, listCreator } = this.state;
     
-    return this.context.lists.map(list => {
-      const listWords = this.context.words.filter(word => word.list_id === list.id)
-      const listUser = this.context.users.find(user => user.id === list.user_id);
-      
-      if (listType.touched && listType.value !== list.type && listType.value !== 'All') {
+    return this.state.lists.map(list => {
+      if (listType.touched && listType.value !== list.game_type && listType.value !== 'All') {
         return '';
       }
 
@@ -63,18 +71,23 @@ class Lists extends Component {
         return '';
       }
 
-      if (listCreator.touched && !listUser.user_name.toLowerCase().includes(listCreator.value.toLowerCase().trim())) {
+      if (listCreator.touched && !list.creator_name.toLowerCase().includes(listCreator.value.toLowerCase().trim())) {
         return '';
+      }
+
+      let listWords = [];
+
+      if (this.state.openList === list.id) {
+        listWords = this.state.listWords;
       }
       
       return <List 
           key={list.id} 
           list={list} 
-          listWords={listWords} 
-          listUser={listUser}
           openList={this.openList}
           closeList={this.closeList}
           isListOpen={this.state.openList}
+          listWords={listWords}
         />
     })
   }

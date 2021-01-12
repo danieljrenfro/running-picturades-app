@@ -6,7 +6,7 @@ import './HomePage.css';
 class HomePage extends Component {
 
   onStartGameClicked() {
-    history.push('/game');
+    history.push('/lists');
   }
 
   onViewListsClicked() {

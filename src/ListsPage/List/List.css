@@ -40,9 +40,17 @@
   padding: 7px 0px 7px 0px;
   font-size: 16px;
   font-weight: bold;
-  background-color: white;
+  background-color: palegreen;
   border-radius: 5px;
-  border-style: solid;
+  border: 3px black solid;
+  cursor: pointer;
+}
+
+.list-buttons > button:hover {
+  box-shadow: 6px 10px 8px -6px rgba(0, 0, 0, 0.4);
+  background-color: mediumseagreen;
+  border: 3px mediumseagreen solid;
+  color: white;
 }
 
 .words-list {

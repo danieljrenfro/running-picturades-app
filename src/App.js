@@ -7,31 +7,21 @@ import Header from './Header/Header';
 import AboutPage from './AboutPage/AboutPage';
 import HomePage from './HomePage/HomePage';
 
-import store from './store';
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
-      lists: [],
-      words: []
+      
     }
   }
 
   componentDidMount() {
-    this.setState({
-      lists: store.lists,
-      words: store.words,
-      users: store.users
-    })
+    
   }
   
   render() {
     const contextValue = {
-      users: this.state.users,
-      lists: this.state.lists,
-      words: this.state.words
+      
     }
 
     return (
