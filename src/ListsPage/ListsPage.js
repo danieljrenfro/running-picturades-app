@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 import ListApiService from '../services/lists-api-service';
-import TokenService from '../services/token-service';
 
 import PicturadesContext from '../PicturadesContext';
 import List from './List/List';
@@ -136,9 +136,9 @@ class Lists extends Component {
     })
   }
 
-  renderCreateListButton() {
-    TokenService.hasAuthToken()
-      ? <button className="create-list-btn" type="button">Create List</button>
+  renderCreateListButton = () => {
+    return (this.context.isLoggedIn)
+      ? (<Link to='/new-list'><button className="create-list-btn" type="button">+</button></Link>)
       : <></>
   }
 
@@ -176,6 +176,8 @@ class Lists extends Component {
             </select>
             <button onClick={this.clearFilters} type="reset">Clear Filters</button>
           </form>
+        </section>
+        <section className='create-btn-section'>
           {this.renderCreateListButton()}
         </section>
         <section className="lists-section">

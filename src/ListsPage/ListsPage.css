@@ -27,3 +27,20 @@ ul {
 .filter-form > button {
   height: 2rem;
 }
+
+.create-btn-section {
+  display: flex;
+  justify-content: center;
+}
+
+.create-list-btn {
+  height: 4rem;
+  width: 4rem;
+  font-size: 28px;
+  background-color: mediumseagreen;
+  color: white;
+  border-radius: 45px;
+  border: mediumseagreen solid;
+  margin: 10px auto 10px auto;
+  cursor: pointer;
+}

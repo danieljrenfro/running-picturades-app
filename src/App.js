@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
+import TokenService from './services/token-service';
+
+import RegisterForm from './RegisterForm/RegisterForm';
 import LoginForm from './LoginForm/LoginForm';
 import PicturadesContext from './PicturadesContext';
 import ListsPage from './ListsPage/ListsPage';
@@ -11,16 +14,19 @@ import HomePage from './HomePage/HomePage';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      isLoggedIn: false
+    }
   }
 
-  componentDidMount() {
-    
+  updateIsUserLoggedIn = () => {
+    this.setState({ isLoggedIn: TokenService.hasAuthToken()})
   }
   
   render() {
     const contextValue = {
-      
+      isLoggedIn: this.state.isLoggedIn,
+      toggleUserLoggedIn: this.updateIsUserLoggedIn
     }
 
     return (
@@ -31,6 +37,7 @@ class App extends Component {
           <Route path='/about' component={AboutPage}/>
           <Route path='/lists' component={ListsPage}/>
           <Route path='/login' component={LoginForm}/>
+          <Route path='/register' component={RegisterForm}/>
         </main>
       </PicturadesContext.Provider>
     );

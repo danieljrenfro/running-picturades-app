@@ -53,6 +53,16 @@
   color: white;
 }
 
+.list-buttons > button:focus {
+  box-shadow: 6px 10px 8px -6px rgba(0, 0, 0, 0.4);
+  background-color: mediumseagreen;
+  border: 3px mediumseagreen solid;
+  color: white;
+  outline: none;
+}
+
+
+
 .words-list {
   width: 90%;
   margin: auto;

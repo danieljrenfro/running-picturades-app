@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import PicturadesContext from '../PicturadesContext';
 import TokenService from '../services/token-service';
 
 import './Header.css';
 
 class Header extends Component {
 
-  handleLogoutClick() {
-    TokenService.clearAuthToken()
+  static contextType = PicturadesContext;
+
+  handleLogoutClick = () => {
+    TokenService.clearAuthToken();
+    this.context.toggleUserLoggedIn();
   }
   
   renderLogoutLink() {
@@ -43,7 +47,7 @@ class Header extends Component {
             <li className="nav-item"><Link to='/'>Home</Link></li>
             <li className="nav-item"><Link to='/about'>About</Link></li>
             <li className="nav-item"><Link to='/lists'>Lists</Link></li>
-            {TokenService.hasAuthToken()
+            {this.context.isLoggedIn
               ? this.renderLogoutLink()
               : this.renderLoginLink()}
           </ul>

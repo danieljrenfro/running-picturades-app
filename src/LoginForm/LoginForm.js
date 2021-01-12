@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import history from '../history';
 
+import PicturadesContext from '../PicturadesContext';
 import AuthApiService from '../services/auth-api-service';
 import TokenService from '../services/token-service';
 
@@ -13,6 +14,8 @@ class LoginForm extends Component {
       error: null
     }
   }
+
+  static contextType = PicturadesContext;
 
   handleLoginFormSubmit = (event) => {
     event.preventDefault();
@@ -27,6 +30,7 @@ class LoginForm extends Component {
         user_name.value = '';
         password.value = '';
         TokenService.saveAuthToken(res.authToken)
+        this.context.toggleUserLoggedIn();
         history.push('/');
       })
       .catch(res => this.setState({ error: res.error }))
@@ -37,8 +41,9 @@ class LoginForm extends Component {
 
     return (
       <section className='login-section'>
-
+        
         <form onSubmit={(e) => this.handleLoginFormSubmit(e)} className="login-form">
+          <h2 className="login-header">Login</h2>
           {error && <p className="error-message">{error}</p>}
           <label htmlFor="user_name">Username:</label>
           <input type="text" name="user_name" id="user_name" required />
