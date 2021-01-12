@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import ListApiService from '../services/lists-api-service';
-import config from '../config';
+import TokenService from '../services/token-service';
 
 import PicturadesContext from '../PicturadesContext';
 import List from './List/List';
@@ -136,6 +136,12 @@ class Lists extends Component {
     })
   }
 
+  renderCreateListButton() {
+    TokenService.hasAuthToken()
+      ? <button className="create-list-btn" type="button">Create List</button>
+      : <></>
+  }
+
   render() {
 
     return (
@@ -168,8 +174,9 @@ class Lists extends Component {
               <option value="Pictionary">Pictionary</option>
               <option value="Charades">Charades</option>
             </select>
-            <button onClick={this.clearFilters} type="button">Clear</button>
+            <button onClick={this.clearFilters} type="reset">Clear Filters</button>
           </form>
+          {this.renderCreateListButton()}
         </section>
         <section className="lists-section">
           <ul>
