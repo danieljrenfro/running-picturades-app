@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 import TokenService from './services/token-service';
 
+import CreateListPage from './CreateListPage/CreateListPage';
 import GamePage from './GamePage/GamePage';
 import RegisterForm from './RegisterForm/RegisterForm';
 import LoginForm from './LoginForm/LoginForm';
@@ -36,11 +37,12 @@ class App extends Component {
         <main>
           <Route exact path='/' component={HomePage}/>
           <Route path='/about' component={AboutPage}/>
-          <Route path='/lists' component={ListsPage}/>
+          <Route exact path='/lists' component={ListsPage}/>
           <Route path='/login' component={LoginForm}/>
           <Route path='/register' component={RegisterForm}/>
           <Route path='/game/:list_id' component={GamePage}/>
-          
+          <Route path='/lists/create' component={CreateListPage}/>
+
         </main>
       </PicturadesContext.Provider>
     );

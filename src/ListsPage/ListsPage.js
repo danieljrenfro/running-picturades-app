@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import ListApiService from '../services/lists-api-service';
-
 import PicturadesContext from '../PicturadesContext';
 import List from './List/List';
 import './ListsPage.css';
@@ -145,7 +144,7 @@ class Lists extends Component {
 
   renderCreateListButton = () => {
     return (this.context.isLoggedIn)
-      ? (<Link to='/new-list'><button className="create-list-btn" type="button">+</button></Link>)
+      ? (<Link to='/lists/create'><button className="create-list-btn" type="button">+</button></Link>)
       : <></>
   }
 

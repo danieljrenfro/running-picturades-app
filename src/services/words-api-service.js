@@ -24,7 +24,7 @@ const WordApiService = {
           : res.json()
       )
   },
-  postWord(words, listId) {
+  postWord(words) {
     return fetch(`${config.API_ENDPOINT}/words`, {
       method: 'POST',
       headers: {
@@ -32,8 +32,7 @@ const WordApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
-        words,
-        listId
+        words: words
       })
     })
       .then(res => 
