@@ -1,0 +1,114 @@
+.error {
+  color: #D8000B;
+  background-color: #FFBABA;
+  padding: 5px 10px 5px 10px;
+}
+
+.error > h2 {
+  margin-left: 0;
+}
+
+.game-header {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.game-header > h2 {
+  margin-left: 0px;
+}
+
+.game-header > button {
+  width: 100%;
+  height: 3rem;
+  margin: 10px 0px 10px 0px;
+  font-size: 24px;
+}
+
+.game-teams {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.team {
+  border: solid 1px darkgray;
+  width: 80vw;
+  margin: 15px 0px 15px 0px;
+  min-height: 10rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.team-name {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.team-name, .team > p {
+  margin-left: 15px;
+}
+
+.team > p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  margin: 0px;
+}
+
+.team-buttons { 
+  display: flex;
+  justify-content: space-between;
+}
+
+.team-buttons > button {
+  height: 3rem;
+  width: 50%;
+  margin: 15px;
+  font-size: 18px;
+}
+
+.game-winner {
+  color: mediumseagreen;
+  font-size: 40px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+@media all and (min-width: 600px) {
+
+  .game-teams {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 80vw;
+    margin: auto;
+  }
+
+  .team {
+    width: 40vw;
+  }
+
+  .team:first-of-type {
+    margin-right: 10px;
+  }
+
+  .team:last-of-type {
+    margin-left: 10px;
+  }
+
+  .game-header {
+    flex-direction: column;
+  }
+
+  .game-header > button {
+
+  }
+}

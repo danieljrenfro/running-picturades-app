@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 import TokenService from './services/token-service';
 
+import GamePage from './GamePage/GamePage';
 import RegisterForm from './RegisterForm/RegisterForm';
 import LoginForm from './LoginForm/LoginForm';
 import PicturadesContext from './PicturadesContext';
@@ -38,6 +39,7 @@ class App extends Component {
           <Route path='/lists' component={ListsPage}/>
           <Route path='/login' component={LoginForm}/>
           <Route path='/register' component={RegisterForm}/>
+          <Route path='/game/:list_id' component={GamePage}/>
         </main>
       </PicturadesContext.Provider>
     );

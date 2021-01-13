@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import history from '../../history';
 
 import './List.css';
 
@@ -12,6 +13,10 @@ class List extends Component {
     return <button onClick={() => this.props.openList(this.props.list.id)} type="button">View List</button>
   }
 
+  startGame = () => {
+    history.push(`/game/${this.props.list.id}`)
+  }
+
   render() {
     return (
       <Fragment>
@@ -23,7 +28,7 @@ class List extends Component {
           </div>
           <div className="list-buttons">
             {this.generateViewButton()}
-            <button type="button">Start Game</button>
+            <button onClick={this.startGame} type="button">Start Game</button>
           </div>
         </li>
         {/* This is conditionally rendering the word list based on whether a list 'isOpen'. */}
