@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import history from '../../history';
+import ListApiService from '../../services/lists-api-service';
 
 import './List.css';
 
@@ -17,14 +18,25 @@ class List extends Component {
     history.push(`/game/${this.props.list.id}`)
   }
 
+  handleDeleteClick = (listId) => {
+    ListApiService.deleteList(listId)
+      .then(() => this.props.deleteListFromState(listId));
+  }
+
   render() {
+    const { list } = this.props; 
+
     return (
       <Fragment>
         <li className="list">
           <div className="list-details">
-            <h3 className="list-title">{this.props.list.title}</h3>
-            <p className="list-creator">{this.props.list.creator_name}</p>
-            <p className="list-type">{this.props.list.game_type}</p>
+            <h3 className="list-title">{list.title}</h3>
+            <p className="list-creator">{list.creator_name}</p>
+            <p className="list-type">{list.game_type}</p>
+            <div className="manage-list-buttons">
+              <button type="button">Edit</button>
+              <button onClick={() => this.handleDeleteClick(list.id)} type="button">Delete</button>
+            </div>
           </div>
           <div className="list-buttons">
             {this.generateViewButton()}
@@ -32,7 +44,7 @@ class List extends Component {
           </div>
         </li>
         {/* This is conditionally rendering the word list based on whether a list 'isOpen'. */}
-        {this.props.isListOpen === this.props.list.id 
+        {this.props.isListOpen === list.id 
           ? (<ul className="words-list">
             {this.props.listWords}
           </ul>)

@@ -61,8 +61,6 @@
   outline: none;
 }
 
-
-
 .words-list {
   width: 90%;
   margin: auto;
@@ -74,6 +72,16 @@
   margin: 5px 0px 5px 0px;
   border: 1px solid black;
   box-shadow: 0 8px 6px -7px rgba(0, 0, 0, 0.4);
+}
+
+.manage-list-buttons {
+  margin-left: 3px;
+  margin-bottom: 3px;
+}
+
+.manage-list-buttons > button {
+  margin-right: 5px;
+  width: 4rem;
 }
 
 @media all and (min-width: 800px) {

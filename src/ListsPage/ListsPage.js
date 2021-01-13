@@ -52,6 +52,12 @@ class Lists extends Component {
     
   }
 
+  deleteList = (listId) => {
+    const newLists = this.state.lists.filter(list => list.id !== listId);
+
+    this.setState({ lists: newLists });
+  }
+
   closeList = () => {
     this.setState({
       listWords: [],
@@ -88,6 +94,7 @@ class Lists extends Component {
           closeList={this.closeList}
           isListOpen={this.state.openList}
           listWords={listWords}
+          deleteListFromState={this.deleteList}
         />
     })
   }
@@ -169,6 +176,8 @@ class Lists extends Component {
             <select
               onChange={(e) => {this.updateListType(e.target.value)}}
               value={this.state.listType.value}
+              id="select-type"
+              name="select-type"
             >
               <option value="All">All</option>
               <option value="Pictionary">Pictionary</option>

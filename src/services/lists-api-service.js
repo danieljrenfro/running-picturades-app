@@ -60,24 +60,26 @@ const ListApiService = {
         'content-type': 'application/json'
       },
       body: JSON.stringify({
-        title,
-        game_type
+        title: title,
+        game_type: game_type
       })
     })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()  
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(e => Promise.reject(e)) 
+        }
+      }
       )
   },
   deleteList(listId) {
     return fetch(`${config.API_ENDPOINT}/lists/${listId}`, {
       method: 'DELETE'
     })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()  
+      .then(res => {
+        if (!res.ok) {
+          res.json().then(e => Promise.reject(e))  
+        }
+      }
       )
   }
 }

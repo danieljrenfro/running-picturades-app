@@ -40,6 +40,7 @@ class App extends Component {
           <Route path='/login' component={LoginForm}/>
           <Route path='/register' component={RegisterForm}/>
           <Route path='/game/:list_id' component={GamePage}/>
+          
         </main>
       </PicturadesContext.Provider>
     );

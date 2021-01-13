@@ -94,6 +94,7 @@
 
   .team {
     width: 40vw;
+    height: 220px;
   }
 
   .team:first-of-type {
@@ -106,9 +107,5 @@
 
   .game-header {
     flex-direction: column;
-  }
-
-  .game-header > button {
-
   }
 }
