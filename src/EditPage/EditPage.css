@@ -1,0 +1,51 @@
+.edit-list-form {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  margin: auto;
+}
+
+.edit-list-form > input, select {
+  margin-bottom: 10px;
+  height: 2rem;
+}
+
+.edit-list-form > label {
+  margin-bottom: 2px;
+  font-size: 20px;
+}
+
+.edit-form-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-form-buttons > button {
+  width: 10rem;
+  height: 2.5rem;
+  margin: 5px 5px 20px 5px;
+}
+
+.edit-form-buttons > button:first-of-type {
+  margin-left: 0px;
+}
+
+.edit-form-buttons > button:last-of-type {
+  margin-right: 0px;
+}
+
+.error-message {
+  color: #D8000B;
+  background-color: #FFBABA;
+  border-radius: 3px;
+  border: solid black 1px;
+  padding: 7px 5px 7px 5px;
+}
+
+
+@media all and (min-width: 600px) {
+  .edit-form-buttons {
+    justify-content: center;
+  }
+}

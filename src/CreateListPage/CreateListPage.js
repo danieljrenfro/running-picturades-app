@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import history from '../history';
 import ListApiService from '../services/lists-api-service';
 import WordApiService from '../services/words-api-service';
 import WordInput from '../WordInput/WordInput';
@@ -137,6 +138,8 @@ class CreateListPage extends Component {
             }
           })
           WordApiService.postWord(newWords)
+          this.resetCreateForm();
+          history.push('/lists');
         })
     }
   }

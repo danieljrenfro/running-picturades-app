@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import ListApiService from '../services/lists-api-service';
-import PicturadesContext from '../PicturadesContext';
+import PicturadesContext from '../Contexts/PicturadesContext';
 import List from './List/List';
 import './ListsPage.css';
 

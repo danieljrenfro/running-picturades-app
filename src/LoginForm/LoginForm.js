@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import history from '../history';
 
-import PicturadesContext from '../PicturadesContext';
+import PicturadesContext from '../Contexts/PicturadesContext';
 import AuthApiService from '../services/auth-api-service';
 import TokenService from '../services/token-service';
 

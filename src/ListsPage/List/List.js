@@ -18,6 +18,10 @@ class List extends Component {
     history.push(`/game/${this.props.list.id}`)
   }
 
+  handleEditClick = (listId) => {
+    history.push(`/lists/${listId}/edit`)
+  }
+
   handleDeleteClick = (listId) => {
     ListApiService.deleteList(listId)
       .then(() => this.props.deleteListFromState(listId));
@@ -34,7 +38,7 @@ class List extends Component {
             <p className="list-creator">{list.creator_name}</p>
             <p className="list-type">{list.game_type}</p>
             <div className="manage-list-buttons">
-              <button type="button">Edit</button>
+              <button onClick={() => this.handleEditClick(list.id)} type="button">Edit</button>
               <button onClick={() => this.handleDeleteClick(list.id)} type="button">Delete</button>
             </div>
           </div>

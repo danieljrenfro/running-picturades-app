@@ -18,11 +18,10 @@ const WordApiService = {
       },
       body: JSON.stringify({ word: updatedWord})
     })
-      .then(res => 
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
+      .then(res => {
+        if (!res.ok)
+          res.json().then(e => Promise.reject(e))
+      })
   },
   postWord(words) {
     return fetch(`${config.API_ENDPOINT}/words`, {

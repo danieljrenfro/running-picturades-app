@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import PicturadesContext from '../PicturadesContext';
+import PicturadesContext from '../Contexts/PicturadesContext';
 import TokenService from '../services/token-service';
 
 import './Header.css';
