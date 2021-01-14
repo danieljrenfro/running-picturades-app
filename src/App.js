@@ -25,6 +25,10 @@ class App extends Component {
   updateIsUserLoggedIn = () => {
     this.setState({ isLoggedIn: TokenService.hasAuthToken()})
   }
+
+  componentDidMount() {
+    this.updateIsUserLoggedIn();
+  }
   
   render() {
     const contextValue = {

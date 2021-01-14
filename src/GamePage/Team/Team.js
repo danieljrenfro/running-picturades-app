@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 class Team extends Component {
 
+  static defaultProps = {
+    team: {},
+    words: []
+  };
+
   render() {
     const { team, words } = this.props;
 

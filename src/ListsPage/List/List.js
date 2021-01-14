@@ -28,7 +28,7 @@ class List extends Component {
   }
 
   render() {
-    const { list } = this.props; 
+    const { list, isListOpen, listWords } = this.props; 
 
     return (
       <Fragment>
@@ -48,9 +48,9 @@ class List extends Component {
           </div>
         </li>
         {/* This is conditionally rendering the word list based on whether a list 'isOpen'. */}
-        {this.props.isListOpen === list.id 
+        {isListOpen === list.id 
           ? (<ul className="words-list">
-            {this.props.listWords}
+            {listWords}
           </ul>)
           : <></>
         }
